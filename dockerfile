@@ -11,4 +11,4 @@ FROM mcr.microsoft.com/dotnet/aspnet:8.0
 WORKDIR /app
 COPY --from=builder /out .
 EXPOSE 8080
-ENTRYPOINT ["sh", "-c", "dotnet $(ls /app/*.dll | head -1)"]
+ENTRYPOINT ["dotnet", "mbCore.dll"]
