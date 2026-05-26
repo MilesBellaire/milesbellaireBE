@@ -2,9 +2,9 @@
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS builder
 WORKDIR /app
 COPY milesbellaireBE/*.csproj ./milesbellaireBE/
-RUN dotnet restore milesbellaireBE/milesbellaireBE.csproj
+RUN dotnet restore milesbellaireBE/mbCore.csproj
 COPY . .
-RUN dotnet publish milesbellaireBE/milesbellaireBE.csproj -c Release -o /out
+RUN dotnet publish milesbellaireBE/mbCore.csproj -c Release -o /out
 
 # Stage 2: Run
 FROM mcr.microsoft.com/dotnet/aspnet:8.0
