@@ -1,10 +1,10 @@
 # Stage 1: Build
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS builder
 WORKDIR /app
-COPY *.csproj ./
-RUN dotnet restore
+COPY milesbellaireBE/*.csproj ./milesbellaireBE/
+RUN dotnet restore milesbellaireBE/milesbellaireBE.csproj
 COPY . .
-RUN dotnet publish -c Release -o /out
+RUN dotnet publish milesbellaireBE/milesbellaireBE.csproj -c Release -o /out
 
 # Stage 2: Run
 FROM mcr.microsoft.com/dotnet/aspnet:8.0
