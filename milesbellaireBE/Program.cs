@@ -13,16 +13,19 @@ builder.Services.AddScoped<DatabaseContext>();
 
 // Add Cors
 string _policyName = "_myAllowSpecificOrigins";
+
+var allowedOrigins = builder.Configuration
+    .GetSection("AllowedOrigins")
+    .Get<string[]>() ?? [];
+
 builder.Services.AddCors(options =>
 {
     options.AddPolicy(name: _policyName,
         policy =>
         {
-            policy.WithOrigins("http://localhost:3000",
-                                "http://localhost:5084",
-                                "http://localhost:7229")
+            policy.WithOrigins(allowedOrigins)
             .AllowAnyMethod()
-            .AllowAnyHeader(); // add the allowed origins  
+            .AllowAnyHeader();
         });
 });
 
