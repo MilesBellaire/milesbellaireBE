@@ -24,6 +24,30 @@ namespace MbCore.Api.Controllers
                 .ToListAsync();
 
             List<WorkExperienceWithPicDto> itemsDto = _mapper.Map<List<WorkExperienceWithPicDto>>(items);
+
+            bool LooksLikePng(byte[] bytes)
+            {
+                if (bytes == null || bytes.Length < 8)
+                    return false;
+
+                return bytes[0] == 0x89 &&
+                    bytes[1] == 0x50 &&
+                    bytes[2] == 0x4E &&
+                    bytes[3] == 0x47 &&
+                    bytes[4] == 0x0D &&
+                    bytes[5] == 0x0A &&
+                    bytes[6] == 0x1A &&
+                    bytes[7] == 0x0A;
+            }
+
+            // console log isValidImage for each item
+            foreach (var item in itemsDto)
+            {
+                Console.WriteLine(item.Name);
+                Console.WriteLine(LooksLikePng(item.Image));
+                // Console.WriteLine(Convert.ToBase64String(item.Image));
+            }
+
             return Ok(itemsDto);
         }
 
