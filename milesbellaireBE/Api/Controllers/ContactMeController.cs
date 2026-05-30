@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.RateLimiting;
 using MbCore.EntityFramework;
 using MbCore.EntityFramework.Models;
 using Microsoft.EntityFrameworkCore;
@@ -9,6 +10,7 @@ namespace MbCore.Api.Controllers
 
     [ApiController]
     [Route("api/contactme")]
+    [EnableRateLimiting(policyName: "FixedRate")]
     public class ContactMeController(DatabaseContext db) : Controller
     {
         private readonly DatabaseContext _db = db;
