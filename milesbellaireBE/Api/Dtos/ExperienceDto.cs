@@ -11,6 +11,7 @@ namespace MbCore.Api.Dtos
         public string Description { get; set; }
         public int Priority { get; set; }
         public List<string> Tags { get; set; }
+        public string Link { get; set; }
     }
 }
 public class ExperienceDtoMapper : Profile

@@ -37,6 +37,7 @@ namespace MbCore.Api.Controllers
                 Description = request.Description,
                 Priority = request.Priority,
                 Tags = request.Tags.Select(t => new Tag(t)).ToList(),
+                Link = request.Link,
             };
 
             PersonalProjectDto personalProjectNoPicDto = _mapper.Map<PersonalProjectDto>(personalProject);
@@ -57,6 +58,7 @@ namespace MbCore.Api.Controllers
             personalProject.Name = request.Name;
             personalProject.Description = request.Description;
             personalProject.Priority = request.Priority;
+            personalProject.Link = request.Link;
             personalProject.Tags = request.Tags.Select(t => new Tag(t)).ToList();
 
             PersonalProjectDto personalProjectNoPicDto = _mapper.Map<PersonalProjectDto>(personalProject);

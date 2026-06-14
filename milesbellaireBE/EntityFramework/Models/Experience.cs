@@ -11,6 +11,7 @@ namespace MbCore.EntityFramework.Models
         public byte[] Image { get; set; }
         public int Priority { get; set; }
         public List<Tag> Tags { get; set; } = new();
+        public string Link { get; set; }
     }
 }
 

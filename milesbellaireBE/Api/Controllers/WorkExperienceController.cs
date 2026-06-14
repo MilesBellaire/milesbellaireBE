@@ -41,6 +41,7 @@ namespace MbCore.Api.Controllers
                 EndDate = request.EndDate,
                 CurrentPosition = request.CurrentPosition,
                 Position = request.Position,
+                Link = request.Link,
             };
 
             WorkExperienceDto workExperienceNoPicDto = _mapper.Map<WorkExperienceDto>(workExperience);
@@ -66,6 +67,7 @@ namespace MbCore.Api.Controllers
             workExperience.StartDate = request.StartDate;
             workExperience.EndDate = request.EndDate;
             workExperience.CurrentPosition = request.CurrentPosition;
+            workExperience.Link = request.Link;
 
             WorkExperienceDto workExperienceNoPicDto = _mapper.Map<WorkExperienceDto>(workExperience);
             _db.Update(workExperience);
